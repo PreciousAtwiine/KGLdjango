@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{% static 'static/css/receipt.css' %}">
+<title>Final receipt</title>
+</head>
+<body>
+    <div class="receipt-wrapper">
+        {% block content %}
+        {% for sale in sales %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Sales Receipt</h5>
+                <div class="card-text">
+                    <h3>Customer:{{ sale.customer_name }}</h3>
+                    <h6>Product:{{ sale.product_name }}</h6>
+                    <h6>Amount Received:{{ sale.amount_received }}</h6>
+                    <h6>Quantity:{{ sale.quantity }}</h6>
+                    <h2>Total Price:{{ sale.get_total }}</h2>
+                    <div class="flex:1">
+                        <h6>Change:UGX {{ sale.get_change }}</h6>
+                    </div>
+                </div>
+                <a href = "{% url 'receipt_detail' sale.id %}"><input type="submit" value="Final Receipt" class="btn btn_danger" ></a>
+            </div>
+        </div>
+        {% endfor %}
+        {% endblock %}
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

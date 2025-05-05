@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="{%static 'static/css/receipt.css' %}">
+<title>Receipt</title>
+</head>
+<body>
+    {% block content %}
+    <div class="card">
+        <div c;ass="card-header">
+            <h1 class="text-center">ORDER SUMMARY</h1>
+            <h2 class="lead">Customer Name:{{receipt.customer_name}}</h2>
+        </div>
+        <div class="card-block">
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <td><strong>Item Name</strong></td>
+                            <td class="text-xs-center"><strong>Item Quantity</strong></td>
+                            <td class="text-xs-center"><strong>Total Bill(UGX)</strong></td>
+                            <td class="text-xs-center"><strong>Amount Paid</strong></td>
+                            <td class="text-xs-center"><strong>Total Change</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ receipt.product_name}}</td>
+                            <td class="text-xs-center">{{ receipt.quantity}}</td>
+                            <td class="text-xs-center">{{ receipt.get_total}}</td>
+                            <td class="text-xs-center">{{ receipt.amount_received}}</td>
+                            <td class="text-xs-center">{{ receipt.get_change}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

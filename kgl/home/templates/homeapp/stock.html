@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="Description" content="Enter your description here"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link rel="stylesheet" href="{% static 'static/css/index.css' %}">
+        <title>Stock</title>
+    </head>
+    <body>
+        {% block content %}
+        <h1> Table of Stock </h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th> Category Name</th>
+                    <th> Product Name</th>
+                    <th> Quantity</th>
+                    <th> Price</th>
+                    <th> Sell item</th>
+                </tr>
+            </thead>
+                {% for stock in stocks %}
+                <tbody>
+                    <tr>
+                        <td> {{ stock.category_name }}</td>
+                        <td>{{ stock.item_name}}</td>
+                        <td> {{stock.quantity}}</td>
+                        <td>{{ stock.cost}}</td>
+                        <td><a href = "{% url 'stock_detail' stock.id %}"><input type="submit" value="Checkout Item" ></a></td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+            {% endblock %}
+        </body>
+        </html>
+        
+
+
+
+
