@@ -1,0 +1,29 @@
+.side-dashboard {
+    background-image: url('../images/side.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* So that I can read the text */
+.side-dashboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+    z-index: 1;
+}
+
+/* Ensure content appears above the image */
+.side-dashboard-content {
+    position: relative;
+    z-index: 2;
+    color: white; /* Light text for dark background */
+    padding: 20px;
+}

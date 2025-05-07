@@ -1,0 +1,47 @@
+{% extends 'homeapp/dashboard.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/sales.css' %}">
+    {% block content %}
+        {% include 'dashboard/DashHeader.html' %}
+
+            <h1 class="mb-4">Dashboard sales</h1>
+            <div class="container mt-5">
+                <div class="tabele-responsive">
+        
+                    <table class="table table-bordered table-striped mt-4">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Unit Price</th>
+                                <th>Quantity</th>
+                                <th>Payment Method</th>
+                                <th>Customer Name</th>
+                                <th> Date</th>
+                                <th>Sales Agent</th>
+                                <th>Amount Received</th>
+        
+                            </tr>
+                        </thead>
+                    <tbody>
+                        {% for sale in sales %}
+                        <tr>
+                            <td>{{ sale.product_name }}</td>
+                            <td>{{ sale.unit_price }}</td>
+                            <td>{{ sale.quantity }}</td>
+                            <td>{{ sale.payment_method }}</td>
+                            <td>{{ sale.customer_name }}</td>
+                            <td>{{ sale.date}}</td>
+                            <td> {{ sale.sales_agent }}</td>
+                            <td>{{ sale.amount_received }}</td>
+        
+                        </tr>
+                        
+                    </tbody>
+                    {% endfor %}
+                    </table>
+                </div>
+            </div>
+            
+        {% include 'dashboard/dashFooter.html' %}
+
+    {% endblock %}

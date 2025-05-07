@@ -1,0 +1,49 @@
+{% extends 'homeapp/dashboard.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/sales.css' %}">
+{% block content %}
+{% include 'dashboard/DashHeader.html' %}
+
+<h1 class="mb-4">Dashboard stock</h1>
+            
+    
+        <table border="1" class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Stock Category</th>
+                    <th>Product Name</th>
+                    {% comment %} <th>Product Description</th> {% endcomment %}
+                    <th>Cost of Stock</th>
+                    <th>Unit Price</th>
+                    <th>Unit Cost</th>
+                    <th>Stock Quantity</th>
+                    <th>Supplier Name</th>
+                    <th>Company Name</th>
+                    <th>Date</th>
+                    
+
+                </tr>
+            </thead>
+                {% for stock in stock %}
+                <tbody>
+                    <tr>
+                        <td> {{ stock.category_name }}</td>
+                        <td>{{ stock.product_name}}</td>
+                        {% comment %} <td> {{stock.product_description}}</td> {% endcomment %}
+                        <td>{{ stock.cost}}</td>
+                        <td>{{ stock.unit_price}}</td>
+                        <td>{{ stock.unit_cost}}</td>
+                        <td>{{ stock.total_quantity}}</td>
+                        <td>{{ stock.product_supplier}}</td>
+                        <td>{{ stock.other_company}}</td>
+                        <td>{{ stock.date}}</td>
+                        
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+            
+
+        {% include 'dashboard/dashFooter.html' %}
+
+    {% endblock %}

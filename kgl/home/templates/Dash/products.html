@@ -1,0 +1,68 @@
+{% extends 'homeapp/dashboard.html' %}
+{% load static %}
+
+
+{% block content %}
+{% include 'dashboard/DashHeader.html' %}
+<div class="container-fluid mt-2">
+    <h1 class="mb-4">Dashboard products</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/gnuts.jpeg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Gnuts</h5>
+                    <p class="card-text">UGX.7000 per kg</p>
+                    <a href="" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+    
+                <img src="{% static 'images/maize.jpeg'%}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Maize</h5>
+                    <p class="card-text">UGX.5000 per comb</p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/beans.jpeg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Beans</h5>
+                    <p class="card-text">UGX.6000 per kg.</p>
+                    <a href="" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/cow-peas.jpeg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Cow peas</h5>
+                    <p class="card-text">UGX.6000 per kg.</p>
+                    <a href="" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="{% static 'images/soybeans.jpeg' %}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Soybeans</h5>
+                    <p class="card-text">UGX.5000 per kg</p>
+                    <a href="" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</div>
+
+
+{% include 'dashboard/dashFooter.html' %}
+
+{% endblock %}

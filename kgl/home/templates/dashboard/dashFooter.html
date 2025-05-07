@@ -1,0 +1,38 @@
+{% load static %}
+<footer class="karibu-footer">
+    <div class="footer-container">
+        <div class="footer-scetion">
+            <h3>Karibu Groceries Limited</h3>
+      <p>Your trusted partner for fresh and affordable groceries</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <address>
+          <p><i class="fas fa-map-marker-alt"></i> Loy Plaza, Kampala, Uganda</p>
+          <p><i class="fas fa-phone"></i> +256 700 123 456</p>
+          <p><i class="fas fa-envelope"></i> info@karibugroceries.co.ug</p>
+          <p><i class="fas fa-clock"></i> Mon-Sat: 8:00 AM - 8:00 PM</p>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Karibu Groceries Limited. All Rights Reserved.</p>
+        <p>Proudly Ugandan</p>
+      </div>
+    </footer>
+    <link rel="stylesheet" href="{% static 'home/css/footer.css' %}">
+    <script>
+      // Auto-update year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  
+
+
+
+

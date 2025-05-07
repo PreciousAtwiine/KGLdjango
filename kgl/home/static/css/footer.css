@@ -1,0 +1,105 @@
+/* footer for Karibu */
+  .karibu-footer {
+    background-color: #2a5a3a;
+    color: #ffffff;
+    padding: 40px 0 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+    padding: 0 15px;
+  }
+  
+  .footer-section h3 {
+    color: #f8c537;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .footer-section h4 {
+    color: #f8c537;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f8c537;
+    padding-bottom: 5px;
+  }
+  
+  .footer-section p, .footer-section address p {
+    margin: 8px 0;
+    line-height: 1.6;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-section a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-section a:hover {
+    color: #f8c537;
+  }
+  
+  .footer-social {
+    margin-top: 15px;
+  }
+  
+  .footer-social a {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    transition: color 0.3s;
+  }
+  
+  .footer-social a:hover {
+    color: #f8c537;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #3a6a4a;
+    margin-top: 20px;
+  }
+  
+  .footer-bottom p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }
+  
+  i {
+    margin-right: 8px;
+    color: #f8c537;
+  }
+  
+  @media (max-width: 768px) {
+    .footer-section {
+      flex: 100%;
+      text-align: center;
+    }
+    
+    .footer-social {
+      justify-content: center;
+    }
+  }

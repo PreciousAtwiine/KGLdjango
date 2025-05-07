@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Enter your description here"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<title>Title</title>
-</head>
-<body>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% load static %}
+{% load crispy_forms_tags %}
+{% extends '../layout.html'%}
+{% block content %}
+Signup page
+    {% if request.user.is_authenticated %}
+    <div class="fles item-center space-x-4 px-6">
+        <a href="{% url 'homeapp:logout' %}"> <input type="button">Logout</a>
+        {% else %}
+        <a href="{% url 'homeapp:login' %}"><input type="button" >Login</a>
+        {% endif %}
+    </div>
+    {% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form| crispy}}
+        <input type="Submit" value="Sign Up" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    </form>
+    {% endblock %}
+    {% endblock content %}

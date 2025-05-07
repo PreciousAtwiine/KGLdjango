@@ -19,7 +19,7 @@ class UserForm(ModelForm):
 #Form for adding sales
 class AddSaleForm(ModelForm):
     class Meta:
-        model = Procurement
+        model = Sale
         fields = '__all__'
 #Form for adding procurement
 class AddProcurementForm(ModelForm):
@@ -32,4 +32,13 @@ class AddProcurementForm(ModelForm):
             if commit:
                 procurement.save()
             return procurement
+class UpdateStockForm(ModelForm):
+    class Meta:
+        model = Stock
+        fields = '__all__'
+        def save(self, commit=True):
+            stock = super(UpdateStockForm, self).save(commit=False)
+            if commit:
+                stock.save()
+            return stock        
         
