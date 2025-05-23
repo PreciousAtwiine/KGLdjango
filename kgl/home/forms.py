@@ -1,21 +1,21 @@
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 #Accessing ModelForm from django
 from django.forms import ModelForm
 #accessing our models to create corresponding forms
 #Importing all forms
 from .models import *
 
-#form for adding a new user
-class UserForm(ModelForm):
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+    firstname = forms.CharField(max_length=30,required=True)
+    lastname = forms.CharField(max_length=30,required=True)
+    
     class Meta:
-        model = Userprofile
-        fields = '__all__'
-        def save(self, commit=True):
-            user = super(UserForm, self).save(commit=False)
-            # Set the password using the set_password method
-            user.set_password(self.cleaned_data['password'])
-            if commit:
-                user.save()
-            return user
+        model = User
+        fields=('username','firstname','lastname','email','password1','password2')
+
 #Form for adding sales
 class AddSaleForm(ModelForm):
     class Meta:

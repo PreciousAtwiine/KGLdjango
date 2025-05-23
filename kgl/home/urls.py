@@ -7,6 +7,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     
     path('',auth_views.LoginView.as_view(template_name='homeapp/login.html'), name='login'),
+    path('signup/', views.signup, name='signup'),
     #URL for dashboard
     path('dashboard/', views.dashboard, name='dashboard'),
     #Dashboard products
@@ -37,10 +38,9 @@ urlpatterns = [
     #path for user detail
     path('details/<int:user_id>/',views.userdetail,name='userdetail'),
     #path('users/<int:user_id>/', views.userdetail, name='userdetail'),
-    path('login/',auth_views.LoginView.as_view(template_name='homeapp/login.html'), name='login'),
     #path('logout/',auth_views.LogoutView.as_view(template_name='homeapp/logout.html'), name='logout'),
     # url for signup page
-    path('signup/', views.signup, name='signup'),
+    
     path('dashboard1/', views.Dashboard_Users, name= 'dashboard1'),
     #url for manager
     path('dasboard2/', views.manager, name='manager'),

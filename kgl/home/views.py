@@ -1,16 +1,14 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from django.template import loader
 #Imports all the models from the models.py file in the same directory
 from home.models import *
-#Accessing all our models
-from django.urls import reverse
 from .forms import *
-from django.shortcuts import redirect
 
 #Borrowing the functionality of inbuilt/existing user from django
 from django.contrib.auth import authenticate, login, logout,get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 # Create your views here.
@@ -18,14 +16,10 @@ from django.contrib.auth.forms import AuthenticationForm
 
 #View for logging in
 def Login(request):
-    form = AuthenticationForm()
-    #return render(request, 'homeapp/login.html', {'form': form})
-
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
-        
         if user is not None and user.is_owner== True:
             form = login(request,user)
             return redirect('/dashboard')
@@ -36,9 +30,23 @@ def Login(request):
             form = login(request,user)
             return redirect('/dashboard')
         else:
-            print("Sorry! something went wrong")
-            form = AuthenticationForm()
-            return render(request, 'homeapp/login.html', {'form': form})
+            messages.error(request,'Invalid username or password')
+    return render(request,'login.html')  
+
+#view for signup page
+def signup(request):
+    if request.method== 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request,user)# log the user in after signing up
+            messages.success(request,'Account created successfully!')
+            return redirect('dashboard')
+        else:
+            form=SignUpForm()
+            return render(request,'homeapp/signup.html',{'form':form})  
+    return render(request,'homeapp/signup.html')     
+           
 @login_required
 def dashboard(request):
     return render(request,'dashboard/dash.html') 
@@ -162,18 +170,7 @@ def userdetail(request,user_id):
     return render(request,'homeapp/userDetails.html', {'user': user})
         
         
-#view for signup page
-def signup(request):
-    if request.method== 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            email = form.cleaned_data.get('email')
-            return redirect('/login')
-        else:
-            form = UserCreationForm()
-            return render(request, 'homeapp/signup.html', {'form': form},{'page_title': "KGL system | Signup",'page':'Signup'})
+
 def manager(request):
     return render(request, 'homeapp/dashboard2.html')
 
