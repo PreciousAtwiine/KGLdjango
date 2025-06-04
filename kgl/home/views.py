@@ -15,23 +15,21 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 #View for logging in
-def Login(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None and user.is_owner== True:
-            form = login(request,user)
-            return redirect('/dashboard')
-        if user is not None and user.is_manager== True:
-            form = login(request,user)
-            return redirect('/dashboard')
-        if user is not None and user.is_salesagent== True:
-            form = login(request,user)
-            return redirect('/dashboard')
-        else:
-            messages.error(request,'Invalid username or password')
-    return render(request,'login.html')  
+def login_view(request):
+    form = LoginForm(request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            user = authenticate(request,username=username,password=password)
+            if user is not None:
+                login(request,user)
+                messages.success(request, f"Welcome {username}!")
+                return redirect('dashboard')
+            else:
+                form.add_error(None,"Invalid username or password.")
+    return render(request,"homeapp/login.html", {'form': form})
+ 
 
 #view for signup page
 def signup(request):
